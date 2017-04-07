@@ -1,4 +1,5 @@
-package com.ayonymus.daggerskeleton;
+import com.ayonymus.daggerskeleton.MVPContract;
+import com.ayonymus.daggerskeleton.MainPresenter;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +10,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 /*
-* CAU: do not use dependency injection in unit test! Mock the components instead!
+* CAUTION: do not use dependency injection in unit test! Mock the components instead!
 * */
 public class MainPresenterTest {
 
@@ -27,5 +28,9 @@ public class MainPresenterTest {
         verify(view, times(1)).updateView(0);
     }
 
-
+    @Test public void givenDoSomethingIsCalled_thenUpdateView() {
+        presenter.setView(view);
+        presenter.doSomething();
+        verify(view, times(1)).updateView(1);
+    }
 }

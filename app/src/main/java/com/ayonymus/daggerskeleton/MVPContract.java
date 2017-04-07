@@ -1,8 +1,13 @@
 package com.ayonymus.daggerskeleton;
 
-/**
- * Created by g on 07/04/17.
- */
-
 public interface MVPContract {
+
+    interface View {
+        void updateView(int displayText);
+    }
+
+    interface Presenter {
+        void setView(View view);
+        void doSomething();
+    }
 }
