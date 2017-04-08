@@ -58,12 +58,7 @@ public class MainActivityTest {
     * */
     @Test public void whenUpdateCalled_thenViewUpdated() throws Throwable {
         // calls to ui still must be performed on the main thread
-        rule.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                rule.getActivity().updateView(5);
-            }
-        });
+        rule.runOnUiThread(() -> rule.getActivity().updateView(5));
         onView(withId(R.id.textView)).check(matches(withText("What a lovely day! " + 5)));
     }
 
