@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 
 import javax.inject.Inject;
 
@@ -35,10 +36,7 @@ public class MainActivityTest {
         App app = (App) instrumentation.getTargetContext().getApplicationContext();
         TestAppComponent component = (TestAppComponent) app.getComponent();
         component.inject(this);
-    }
-
-    @Test public void whenActivityStarted_thenViewIsSet() {
-        verify(presenter, atLeastOnce()).setView(any(MVPContract.View.class));
+        Mockito.reset(presenter);
     }
 
     /*
