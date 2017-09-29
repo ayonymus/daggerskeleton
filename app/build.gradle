@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "com.ayonymus.daggerskeleton"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 3
         versionName "0.3"
         testInstrumentationRunner "com.ayonymus.daggerskeleton.CustomTestRunner"
@@ -29,10 +29,12 @@ android {
 }
 
 ext {
-    DAGGER_VERSION = '2.10'
-    BUTTER_VERSION = '8.5.1'
-    SUPPORT_VERSION = '25.3.1'
-    MOCKITO_VERSION = '2.7.21'
+    BUTTER_VERSION = '8.8.1'
+    DAGGER_VERSION = '2.11'
+    ESPRESSO_VERSION = '3.0.0'
+    JUNIT_VERSION = '4.12'
+    MOCKITO_VERSION = '2.9.0'
+    SUPPORT_VERSION = '26.0.1'
 }
 
 dependencies {
@@ -45,11 +47,11 @@ dependencies {
 
     compile "com.android.support:appcompat-v7:${SUPPORT_VERSION}"
 
-    testCompile 'junit:junit:4.12'
+    testCompile "junit:junit:${JUNIT_VERSION}"
     testCompile "org.mockito:mockito-core:${MOCKITO_VERSION}"
+
     androidTestCompile "org.mockito:mockito-android:${MOCKITO_VERSION}"
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    androidTestCompile "com.android.support.test.espresso:espresso-core:${ESPRESSO_VERSION}",
+            { exclude group: 'com.android.support', module: 'support-annotations' }
 
 }
